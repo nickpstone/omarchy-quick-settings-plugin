@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "nick.quick-settings",
+  "name": "Quick Settings",
+  "version": "1.0.0",
+  "author": "Nick Stone",
+  "license": "MIT",
+  "description": "A configurable quick settings panel for opening your installed plugin controls.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Quick Settings",
+    "description": "Choose plugins and open their controls from one panel.",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  },
+  "homepage": "https://github.com/nickpstone/omarchy-quick-settings-plugin"
+}
