@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "nick.quick-settings",
   "name": "Quick Settings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Nick Stone",
   "license": "MIT",
   "description": "A configurable quick settings panel for opening your installed plugin controls.",

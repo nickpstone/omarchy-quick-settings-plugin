@@ -29,9 +29,12 @@ Panel {
         }
         return out
     }
-    readonly property var available: plugins.filter(function(p) {
-        return (p.name + " " + p.description).toLowerCase().indexOf(root.filter.toLowerCase()) !== -1
-    })
+    readonly property var available: {
+        var query = root.filter.trim().toLowerCase()
+        return plugins.filter(function(p) {
+            return (p.name + " " + p.id + " " + (p.description || "")).toLowerCase().indexOf(query) !== -1
+        })
+    }
 
     function refresh() { if (!status.running && !busy) status.running = true }
     function update(text) {
@@ -110,7 +113,7 @@ Panel {
         target: "nick.quick-settings-actions"
         function edit(): void { root.open(); root.edit() }
         function refresh(): void { root.refresh() }
-        function inspect(): string { return JSON.stringify({ opened: root.opened, count: root.tiles.length, editing: root.editing, error: root.error }) }
+        function inspect(): string { return JSON.stringify({ opened: root.opened, count: root.tiles.length, editing: root.editing, filter: root.filter, matches: root.available.map(function(p) { return p.id }), searchFocused: searchField.activeFocus, error: root.error }) }
         function launch(id: string): void {
             var plugin = root.plugins.find(function(p) { return p.id === id })
             if (plugin) root.openPlugin(plugin)
@@ -132,14 +135,19 @@ Panel {
             else root.toggle()
         }
     }
-    PopupCard {
+    KeyboardPanel {
         anchorItem: button
         bar: root.bar
         owner: root
         open: root.opened
         id: popup
+        focusTarget: root.editing ? searchField : panelKeys
         contentWidth: Style.space(480)
         contentHeight: Math.min(Style.space(root.editing ? 580 : Math.max(350, 140 + Math.ceil(root.tiles.length / 3) * 90)), Math.max(200, availableCardHeight - verticalContentInset))
+        Item {
+            id: panelKeys
+            Keys.onEscapePressed: root.close()
+        }
         ColumnLayout {
             anchors.fill: parent
             spacing: Style.space(12)
@@ -186,6 +194,9 @@ Panel {
                 font.pixelSize: Style.font.caption
             }
             TextField {
+                id: searchField
+                onVisibleChanged: if (visible) Qt.callLater(function() { searchField.forceActiveFocus() })
+                Keys.onEscapePressed: root.close()
                 Layout.fillWidth: true
                 visible: root.editing
                 placeholderText: "Search plugins…"

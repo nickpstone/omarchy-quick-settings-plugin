@@ -39,7 +39,7 @@ omarchy plugin enable nick.quick-settings --section right
 
 1. Click the gear in the bar to open Quick Settings.
 2. Click the pencil, or right-click the gear, to edit your selection.
-3. Check the plugins you want and choose **Save selection**.
+3. Type in the focused search field to filter by name, description or plugin ID. Check the plugins you want and choose **Save selection**.
 4. Click a tile to open that plugin’s own controls.
 
 Tiles follow the order in which you select plugins. Cancel discards pending edits. The refresh button rescans installed plugins. Disabled plugins can be enabled using the play button in the editor.
