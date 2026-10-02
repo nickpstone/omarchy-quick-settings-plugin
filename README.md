@@ -17,7 +17,7 @@ One configurable menu for your Omarchy plugin controls. Select the plugins you w
 An Omarchy installation with the Quickshell plugin system, Python 3, Git, and the `omarchy`, `omarchy-shell`, and `omarchy-plugin-catalog` commands. Tested on Omarchy **4.0.4-1**. The plugin uses Omarchy shell internals; older releases and future shell changes may require adjustments.
 
 ##Preview (Screenshot)
-https://github.com/nickpstone/omarchy-quick-settings-plugin/blob/main/omarchy%20quick%20settings%20preview.png
+[https://github.com/nickpstone/omarchy-quick-settings-plugin/blob/main/omarchy%20quick%20settings%20preview.png]
 
 
 ## Install
